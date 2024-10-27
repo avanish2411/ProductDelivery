@@ -12,14 +12,12 @@ export default function Layout() {
       const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
 
       if (existingItem) {
-        // Increase the quantity if item already exists
         return prevCart.map((cartItem) =>
           cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );
       } else {
-        // Add new item with quantity 1
         return [...prevCart, { ...item, quantity: 1 }];
       }
     });
@@ -37,7 +35,7 @@ export default function Layout() {
           }
           return item;
         })
-        .filter((item) => item.quantity > 0) // Filter out items with quantity <= 0
+        .filter((item) => item.quantity > 0)
     );
   };
 

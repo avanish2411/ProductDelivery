@@ -8,13 +8,12 @@ export default function Cart() {
   const [deliveryDate, setDeliveryDate] = useState(null);
 
   const estimateDeliveryDate = () => {
-    // Check if pincode is exactly 6 digits
     if (pincode.length !== 6) {
       Alert.alert("Warning", "Please enter a valid 6-digit pincode.");
       return;
     }
 
-    const deliveryDays = Math.floor(Math.random() * (10 - 5 + 1)) + 5; // Random 5-10 days
+    const deliveryDays = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
     const date = new Date();
     date.setDate(date.getDate() + deliveryDays);
     const estimatedDate = date.toDateString();
@@ -23,7 +22,6 @@ export default function Cart() {
     Alert.alert("Estimated Delivery Date", `Your order will arrive on: ${estimatedDate}`);
   };
 
-  // Render function for cart items
   const renderCartItem = ({ item }) => (
     <View style={styles.cartItem}>
       <Text style={styles.itemTitle}>{item.title}</Text>
@@ -49,6 +47,7 @@ export default function Cart() {
           renderItem={renderCartItem}
           ListHeaderComponent={
             <>
+
               {/* Pincode Section */}
               <Text style={styles.pincodeTitle}>Enter Pincode</Text>
               <TextInput
@@ -56,15 +55,15 @@ export default function Cart() {
                 placeholder="Enter your pincode"
                 value={pincode}
                 onChangeText={(text) => {
-                  const filteredText = text.replace(/[^0-9]/g, ''); // Allow only numbers
-                  // Only set pincode if the length is <= 6
+                  const filteredText = text.replace(/[^0-9]/g, '');
                   if (filteredText.length <= 6) {
                     setPincode(filteredText);
                   }
                 }}
-                keyboardType="numeric" // Show numeric keyboard
-                maxLength={6} // Limit length for pincode
+                keyboardType="numeric" 
+                maxLength={6} 
               />
+
               {/* Delivery Button */}
               <TouchableOpacity style={styles.deliveryButton} onPress={estimateDeliveryDate}>
                 <Text style={styles.deliveryButtonText}>Delivery Estimate</Text>
@@ -74,7 +73,7 @@ export default function Cart() {
           ListFooterComponent={
             deliveryDate && <Text style={styles.deliveryDate}>Estimated Delivery Date: {deliveryDate}</Text>
           }
-          showsVerticalScrollIndicator={false} // Optional: hides the scroll indicator
+          showsVerticalScrollIndicator={false}
         />
       ) : (
         <Text style={styles.emptyCartText}>Your cart is empty.</Text>

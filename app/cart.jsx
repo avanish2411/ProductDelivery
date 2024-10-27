@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { View, Text, FlatList, TextInput, StyleSheet, Alert } from "react-native";
+import { View, Text, FlatList, TextInput, StyleSheet, Alert, SafeAreaView } from "react-native";
 import { CartContext } from "./_layout";
 import { TouchableOpacity } from "react-native";
 
@@ -40,7 +40,7 @@ export default function Cart() {
   );
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Cart Items</Text>
       {cart.length > 0 ? (
         <FlatList
@@ -79,7 +79,7 @@ export default function Cart() {
       ) : (
         <Text style={styles.emptyCartText}>Your cart is empty.</Text>
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 

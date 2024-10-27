@@ -1,4 +1,3 @@
-// app/index.js
 import React, { useEffect, useState, useContext } from "react";
 import { View, Text, Button, FlatList, StyleSheet, ActivityIndicator } from "react-native";
 import { useRouter } from "expo-router";
@@ -6,11 +5,10 @@ import { CartContext } from "./_layout";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true); // State for loading indicator
+  const [loading, setLoading] = useState(true);
   const { addToCart } = useContext(CartContext);
   const router = useRouter();
 
-  // Fetch products from API
   const fetchProducts = async () => {
     try {
       const response = await fetch("https://fakestoreapi.com/products");
@@ -19,7 +17,7 @@ export default function ProductList() {
     } catch (error) {
       console.error("Error fetching products:", error);
     } finally {
-      setLoading(false); // Stop loading once data is fetched
+      setLoading(false);
     }
   };
 
@@ -32,7 +30,6 @@ export default function ProductList() {
       <Text style={styles.title}>Product List</Text>
 
       {loading ? (
-        // Show loading spinner while data is fetching
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
         <FlatList

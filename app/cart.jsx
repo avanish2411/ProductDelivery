@@ -1,4 +1,3 @@
-// app/cart.js
 import React, { useContext, useState } from "react";
 import { View, Text, FlatList, Button, TextInput, StyleSheet, Alert } from "react-native";
 import { CartContext } from "./_layout";
@@ -7,10 +6,8 @@ export default function Cart() {
   const { cart, removeFromCart, pincode, setPincode } = useContext(CartContext);
   const [deliveryDate, setDeliveryDate] = useState(null);
 
-  // Function to estimate delivery date
   const estimateDeliveryDate = () => {
     if (!pincode) {
-      // Show warning if pincode is empty
       Alert.alert("Warning", "Please enter a pincode.");
       return;
     }
@@ -21,8 +18,6 @@ export default function Cart() {
     const estimatedDate = date.toDateString();
 
     setDeliveryDate(estimatedDate);
-
-    // Show the estimated delivery date in an alert box
     Alert.alert("Estimated Delivery Date", `Your order will arrive on: ${estimatedDate}`);
   };
 

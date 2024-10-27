@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
-import { View, Text, Button, FlatList, StyleSheet, ActivityIndicator } from "react-native";
+import { View, Text, FlatList, StyleSheet, ActivityIndicator } from "react-native";
 import { useRouter } from "expo-router";
 import { CartContext } from "./_layout";
+import { TouchableOpacity } from "react-native";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -36,17 +37,39 @@ export default function ProductList() {
           data={products}
           keyExtractor={(item) => item.id.toString()}
           showsVerticalScrollIndicator={false}
-          style={{marginBottom:20,}}
+          style={{ marginBottom: 20 }}
           renderItem={({ item }) => (
             <View style={styles.productItem}>
-              <Text>{item.title}</Text>
-              <Button title="Add to Cart" onPress={() => addToCart(item)} />
+              <Text style={{ paddingBottom: 8, fontSize: 16 }}>{item.title}</Text>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: 'lightblue',
+                  height: 35,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: 16,
+                }}
+                onPress={() => addToCart(item)}
+              >
+                <Text style={{ fontWeight: '400', fontSize: 15 }}>Add to cart</Text>
+              </TouchableOpacity>
             </View>
           )}
         />
       )}
 
-      <Button title="View Cart" onPress={() => router.push("/cart")} />
+      <TouchableOpacity
+        style={{
+          backgroundColor: 'lightblue',
+          height: 35,
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderRadius: 16,
+        }}
+        onPress={() => router.push("/cart")}
+      >
+        <Text style={{ fontWeight: '400', fontSize: 15 }}>View Cart</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -57,15 +80,18 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginVertical: 10,
+    fontSize: 32,
+    textAlign: 'center',
+    paddingTop: 15,
+    fontWeight: '800',
   },
   productItem: {
     padding: 10,
-    marginVertical: 5,
+    marginVertical: 6,
     borderColor: "black",
     borderWidth: 1,
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#f5f5dc",
+    borderRadius: 16,
+    elevation: 3,
   },
 });

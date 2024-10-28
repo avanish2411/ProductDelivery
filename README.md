@@ -29,3 +29,17 @@ A simple React Native application that allows users to view a list of products, 
 
 ## API for Data:
    Fetch Products: https://fakestoreapi.com/products
+
+
+## Steps to View the App
+To view this app, follow these steps:
+
+1. **Install the Expo Go App**:
+   - Download the [Expo Go app](https://play.google.com/store/apps/details?id=host.exp.exponent) from the Play Store.
+   - Create an account in the Expo Go app.
+
+2. **Request Viewer Access**:
+   - Raise an issue in the repository with a comment containing your Expo account email so that you can be added as a viewer.
+
+3. **Access the App**:
+   - Visit the [Product Delivery App](https://expo.dev/accounts/productdeliveryapptest/projects/product-delivery/updates/7b59bcc8-0589-4aa9-be6f-623566357057) URL.
